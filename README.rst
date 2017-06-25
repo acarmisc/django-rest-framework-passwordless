@@ -227,7 +227,7 @@ Here’s a full list of the configurable defaults.
 
 ::
 
-    DEFAULTS = {
+    PASSWORDLESS_AUTH = {
 
         # Allowed auth types, can be EMAIL, MOBILE, or both.
         'PASSWORDLESS_AUTH_TYPES': ['EMAIL'],
