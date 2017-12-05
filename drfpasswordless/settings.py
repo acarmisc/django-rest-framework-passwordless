@@ -72,6 +72,8 @@ DEFAULTS = {
     # Automatically send verification email or sms when a user changes their alias.
     'PASSWORDLESS_AUTO_SEND_VERIFICATION_TOKEN': False,
 
+    # Base url for auth link
+    'PASSWORDLESS_BASE_URL': None,
 }
 
 # List of settings that may be in string import notation.
