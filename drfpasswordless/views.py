@@ -129,6 +129,27 @@ class AbstractBaseObtainAuthToken(APIView):
     renderer_classes = (renderers.JSONRenderer,)
     serializer_class = None
 
+    def get(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.GET)
+        if serializer.is_valid(raise_exception=True):
+            user = serializer.validated_data['user']
+            token, created = Token.objects.get_or_create(user=user)
+
+            ''' Token created does not mean user is new '''
+            #if created:
+            #    # Initially set an unusable password if a user is created through this.
+            #    user.set_unusable_password()
+            #    user.save()
+
+            if token:
+                # Return our key for consumption.
+                return Response({'token': token.key}, status=status.HTTP_200_OK)
+        else:
+            log.error(
+                "Couldn't log in unknown user. Errors on serializer: %s" % (serializer.error_messages, ))
+        return Response({'detail': 'Couldn\'t log you in. Try again later.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):

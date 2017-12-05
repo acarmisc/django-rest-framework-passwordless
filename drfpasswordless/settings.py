@@ -39,6 +39,9 @@ DEFAULTS = {
     # The email template name.
     'PASSWORDLESS_EMAIL_TOKEN_HTML_TEMPLATE_NAME': "passwordless_default_token_email.html",
 
+    # The email template name with url.
+    'PASSWORDLESS_EMAIL_TOKEN_HTML_URL_TEMPLATE_NAME': None,
+
     # Your twilio number that sends the callback tokens.
     'PASSWORDLESS_MOBILE_NOREPLY_NUMBER': None,
 
@@ -74,6 +77,7 @@ DEFAULTS = {
 # List of settings that may be in string import notation.
 IMPORT_STRINGS = (
     'PASSWORDLESS_EMAIL_TOKEN_HTML_TEMPLATE',
+    'PASSWORDLESS_EMAIL_TOKEN_URL_HTML_TEMPLATE',
     'PASSWORDLESS_CONTEXT_PROCESSORS',
 )
 
