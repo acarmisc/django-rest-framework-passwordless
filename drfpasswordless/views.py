@@ -102,7 +102,8 @@ class ObtainEmailVerificationCallbackToken(AbstractBaseObtainCallbackToken):
     email_plaintext = api_settings.PASSWORDLESS_EMAIL_VERIFICATION_PLAINTEXT_MESSAGE
     email_html = api_settings.PASSWORDLESS_EMAIL_VERIFICATION_TOKEN_HTML_TEMPLATE_NAME
     message_payload = {'email_subject': email_subject,
-                       'email_plaintext': email_plaintext,
+                       #TODO: handle plain text mail readers
+                       'email_plaintext': email_html,
                        'email_html': email_html}
 
 
